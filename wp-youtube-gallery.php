@@ -44,6 +44,7 @@ function wpyg_sidebar_init(){
 	register_setting('wpyg_sidebar_options','wpyg_iframe_w');
 	register_setting('wpyg_sidebar_options','wpyg_iframe_h');
 	register_setting('wpyg_sidebar_options','wpyg_per_row_posts');
+	register_setting('wpyg_sidebar_options','wpyg_lightbox');
 
 
 } 
@@ -110,6 +111,12 @@ function wpyg_sidebar_admin_option_page(){ ?>
 				<input type="text" id="wpyg_iframe_w" name="wpyg_iframe_w" size="10" value="<?php echo get_option('wpyg_iframe_w'); ?>" placeholder="Width">x<input type="text" id="wpyg_iframe_h" name="wpyg_iframe_h" size="10" value="<?php echo get_option('wpyg_iframe_h'); ?>" placeholder="Height">
 				</td>
 			</tr>
+			<tr>
+				<th nowrap><?php echo 'Enable Lightbox On Videos:';?></th>
+				<td>
+				<input type="checkbox" id="wpyg_lightbox" name="wpyg_lightbox" value='1' <?php if(get_option('wpyg_lightbox')!=''){ echo ' checked="checked"'; }?>/>
+				</td>
+			</tr>
 				<tr><td colspan="2">&nbsp;</td></tr>		
 			<tr>
 				<th>&nbsp;</th>
@@ -146,6 +153,7 @@ function wpyg_plugin_uninstall(){
 	delete_option('wpyg_per_row_posts');
 	delete_option('wpyg_iframe_w');
 	delete_option('wpyg_iframe_h');
+	delete_option('wpyg_lightbox');
 
 
 } 
