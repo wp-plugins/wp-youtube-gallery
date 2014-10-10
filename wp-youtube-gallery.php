@@ -115,8 +115,6 @@ function wpyg_sidebar_admin_option_page(){ ?>
 				<th>&nbsp;</th>
 				<td><?php echo get_submit_button('Save Settings','button-primary','submit','','');?></td>
 			</tr>	
-			<tr><td colspan="2"><strong>Shortcode</strong></td></tr>
-			<tr><td colspan="2">[wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"]<br> For show all youtube vedis from specific gallery category</td></tr>
 			<tr><td colspan="2">&nbsp;</td></tr>		
 		</table>
     <?php settings_fields('wpyg_sidebar_options'); ?>

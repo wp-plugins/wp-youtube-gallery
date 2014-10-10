@@ -174,7 +174,7 @@ function create_wp_youtube_gallery_taxonomies() {
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'wp_youtube_gallery_tax', 'with_front' => true,'hierarchical' => true),
+		'rewrite'           => array( 'slug' => 'wp_youtube_gallery_tax', 'with_front' => true,'hierarchical' => false),
 	);
 
 	register_taxonomy( 'wp_youtube_gallery_taxonomy', array( 'wp_youtube_gallery' ), $args );
@@ -182,6 +182,14 @@ function create_wp_youtube_gallery_taxonomies() {
 
 /* End Youtube Taxonomies */
 
+/** add css to wp_head */
+add_action('wp_enqueue_scripts','add_wpyg_style');
+function add_wpyg_style()
+{
+//wp_enqueue_script( 'jquery' ); // wordpress jQuery
+wp_register_style( 'wpyg_style', plugins_url( 'css/wpyg.css',__FILE__ ) );
+wp_enqueue_style( 'wpyg_style' );
+	}
 
 /*
  * Function for get all youtube pages on list page
@@ -213,8 +221,42 @@ $perrow=stripslashes($pluginOptions['wpyg_per_row_posts']);
 if($perrow==''){$perrow='3';}
 
 
-$catid=$attr['catid'];
 
+if(isset($attr['catid']) && $attr['catid']!='')
+{
+	$terms=$attr['catid'];
+	$field='id';
+	
+	}else
+{
+	$terms=$attr['category_slug'];
+	$field='slug';
+	}
+
+// Per row	
+if(isset($attr['per_row']) && $attr['per_row']!='')
+{
+	$perrow=$attr['per_row'];
+}
+	
+// Total	
+if(isset($attr['total_videos']) && $attr['total_videos']!='')
+{
+	$numberOfVideo=$attr['total_videos'];
+}
+
+// Iframe Height	
+if(isset($attr['height']) && $attr['height']!='')
+{
+$iframeHeight=$attr['height'];
+}
+	
+// Iframe Width	
+if(isset($attr['width']) && ''!=$attr['width'])
+{
+	$iframeWidth=$attr['width'];
+}
+	
 wp_reset_query();
 $args = array(
     'post_type' => 'wp_youtube_gallery',
@@ -226,8 +268,8 @@ $args = array(
     'tax_query' => array(
         array(
             'taxonomy' => 'wp_youtube_gallery_taxonomy',
-            'field' => 'id',
-            'terms' => $catid
+            'field' => $field,
+            'terms' => $terms
         )
     )
 );
@@ -237,21 +279,31 @@ $wpyg_content='';
 if($wpyg_query->have_posts()):
 $wpyg_content .="<div class='wp_youtube_gallery_block'><table class='wp_youtube_gallery'><tr>";
 $ij=1;
+$totalposts=$wpyg_query->found_posts;
+
+$widthAvg=((100)/$perrow);
+
 while ( $wpyg_query->have_posts() ) : $wpyg_query->the_post();
+
+       $videoId=stripslashes(get_post_meta(get_the_ID(),'wpyg_video-id',true));
 	   $wpyg_content .='
                     	
                             <td class="youtube">
                             		<h3>'.get_the_title().'</h3>
-                                    <div class="youtubevideo clearfix"><iframe width="'.$iframeWidth.'" height="'.$iframeHeight.'" src="//www.youtube.com/embed/'.strip_tags(get_post_meta(get_the_ID(),'yt_video-id',true)).'" frameborder="0" allowfullscreen></iframe></div>
-                                    <p class="contet">'.get_the_content().'</p>
+                                    <div class="youtubevideo" ><iframe width="'.$iframeWidth.'" height="'.$iframeHeight.'" src="//www.youtube.com/embed/'.$videoId.'" frameborder="0" allowfullscreen></iframe>
+                                    <div class="content">'.get_the_content().'</p>
+                                    </div>
+                                    
                             </td>
                         ';
         if($perrow==$ij)     
         {
 			$wpyg_content .='</tr><tr>';
-			$ij=1;
+			$ij=0;
+			//$ij--; 
 			}   
-     $ij++;     
+      
+       $ij++; 
                  
 	endwhile;
 	$wpyg_content .="</tr></table></div>";

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: youtube gallery, youtube,gallery,video gallery
 Requires at least: 2.7
 Tested up to: 4.0
-Stable tag: 1.0
+Stable tag: 1.1
 
 Add Youtube Gallery On Your Site!
 
@@ -12,11 +12,21 @@ Add Youtube Gallery On Your Site!
 
 "wp-youtube-gallery" is the very simple plugin for add to simple youtube gallery on your site.
 
-Using this plugin you can easly add the youtube gallery on any page/post using shortcode
+Using this plugin we can easly add the youtube gallery on any page/post using shortcode. It's a responsive plugin.
+
+[wp_youtube_gallery category_slug="test" per_row="4" total_videos="3" height="200" width="300"]
 
 = Features = 
-* Shortcode [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"]
-* Seprate gallery category section
+* Responsive gallery
+* Show Youtube videos on any page/post using shortcode
+* Use category id/slug in shortcode for publish the video from specific category
+* Option for define the number of videos to publish on post
+* Options for define the number or videos per row
+
+= Shortcode = 
+* [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"]
+* [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]
+* [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG" per_row="Define number of video to publish on per row" total_videos="Define number of videos publish on page" width="define iframe width" height="define iframe height"]
 
 
 == Installation ==
@@ -41,5 +51,9 @@ Using [wp_youtube_gallery catid="ENTER CATEGORY ID"] shortcode you can add the g
 
 == Changelog == 
 
+= 1.1 = 
+ * Plugin is now responsive
+ * Add new options to define into sortcode
+ * Fixed CSS issues
 = 1.0 = 
  * First stable release
