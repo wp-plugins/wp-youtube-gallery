@@ -8,7 +8,7 @@
  * */
 
 add_action('init','add_wp_youtube_post_type');
-
+if(!function_exists('add_wp_youtube_post_type')){ 
 function add_wp_youtube_post_type()
 {
 	$labels = array(
@@ -28,7 +28,7 @@ function add_wp_youtube_post_type()
 	    )
 	);
 }
-
+}
 
 /*
  * Add New Meta Box Field For WP Youtube Gallery
@@ -41,10 +41,12 @@ add_action( 'add_meta_boxes', 'add_wp_youtube_gallery_meta_box' );
 /**
  * Adds the WP Youtube Gallery meta box
  */
+ if(!function_exists('add_wp_youtube_gallery_meta_box')){ 
 function add_wp_youtube_gallery_meta_box()
 {
  global $meta_box;
     add_meta_box($meta_box['id'], $meta_box['title'], 'show_wp_youtube_gallery_meta_box','wp_youtube_gallery', $meta_box['context'], $meta_box['priority']);
+}
 }
 
 //Define meta box fields
@@ -69,6 +71,7 @@ function add_wp_youtube_gallery_meta_box()
 
 
 //Display WP Youtube Gallery Meta Box on youtube pages
+if(!function_exists('show_wp_youtube_gallery_meta_box')){ 
 function show_wp_youtube_gallery_meta_box()
 {
 global $meta_box, $post;
@@ -104,10 +107,11 @@ global $meta_box, $post;
 
     }
 }
+}
 
 //Define action for save to "WP Youtube Gallery" Meta Box fields Value
 add_action( 'save_post', 'save_wp_youtube_gallery_meta_box' );
-
+if(!function_exists('save_wp_youtube_gallery_meta_box')){ 
 function save_wp_youtube_gallery_meta_box($post_id) {
 	global $meta_box;
 	// Check if our nonce is set.
@@ -142,6 +146,7 @@ function save_wp_youtube_gallery_meta_box($post_id) {
 		}
 	}
 }
+}
 
 /* 
  * Register New "WP Youtube Gallery" Texonimoies
@@ -151,7 +156,7 @@ function save_wp_youtube_gallery_meta_box($post_id) {
 
 // define init action and call create_wp_youtube_gallery_taxonomies when it fires
 add_action( 'init', 'create_wp_youtube_gallery_taxonomies', 0 );
-
+if(!function_exists('create_wp_youtube_gallery_taxonomies')){ 
 function create_wp_youtube_gallery_taxonomies() {
 	// Add new taxonomy, make it hierarchical (like categories)
 	$labels = array(
@@ -179,23 +184,44 @@ function create_wp_youtube_gallery_taxonomies() {
 
 	register_taxonomy( 'wp_youtube_gallery_taxonomy', array( 'wp_youtube_gallery' ), $args );
 }
-
+}
 /* End Youtube Taxonomies */
 
 /** add css to wp_head */
 add_action('wp_enqueue_scripts','add_wpyg_style');
+if(!function_exists('add_wpyg_style')){ 
 function add_wpyg_style()
 {
-//wp_enqueue_script( 'jquery' ); // wordpress jQuery
+wp_enqueue_script( 'jquery' ); // wordpress jQuery
 wp_register_style( 'wpyg_style', plugins_url( 'css/wpyg.css',__FILE__ ) );
 wp_enqueue_style( 'wpyg_style' );
+wp_register_style( 'wpyg_colorbox_style', plugins_url( 'css/colorbox.css',__FILE__ ) );
+wp_enqueue_style( 'wpyg_colorbox_style' );
+wp_register_script( 'wpyg_colorbox_script', plugins_url( 'js/jquery.colorbox.js',__FILE__ ) );
+wp_enqueue_script( 'wpyg_colorbox_script' );
 	}
+}
+/** Add js to head section */
+add_action('wp_head','wpyg_load_inline_script');
+
+if(!function_exists('wpyg_load_inline_script')):
+
+function wpyg_load_inline_script()
+{
+$js='<script>jQuery(document).ready(function(){
+				jQuery(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+			});</script>';
+echo $js;		
+	}
+endif;
+
 
 /*
  * Function for get all youtube pages on list page
  * @WP_Query()
  * 
  * */
+if(!function_exists('get_wp_youtube_gallery')){ 
 function get_wp_youtube_gallery($attr)
 {
 /* Get Plugin Options */	
@@ -203,6 +229,11 @@ $pluginOptions=get_wpyg_admin_options();
 
 /*Is plugin active*/
 $isEnable=$pluginOptions['wpyg_active'];
+
+
+/*Is lightbox active*/
+if(isset($pluginOptions['wpyg_lightbox']))
+$isLightboxEnable=$pluginOptions['wpyg_lightbox'];
 
 /*Show Number Of Videos*/
 $numberOfVideo=stripslashes($pluginOptions['wpyg_number_posts']);
@@ -281,17 +312,18 @@ $wpyg_content .="<div class='wp_youtube_gallery_block'><table class='wp_youtube_
 $ij=1;
 $totalposts=$wpyg_query->found_posts;
 
-$widthAvg=((100)/$perrow);
+$widthAvg=((100-($perrow*2))/$perrow);
 
+if(isset($isLightboxEnable) && $isLightboxEnable==1):
 while ( $wpyg_query->have_posts() ) : $wpyg_query->the_post();
 
        $videoId=stripslashes(get_post_meta(get_the_ID(),'wpyg_video-id',true));
-	   $wpyg_content .='
+         $wpyg_content .='
                     	
-                            <td class="youtube">
+                            <td class="youtubetext" style="width:'.$widthAvg.'%;">
                             		<h3>'.get_the_title().'</h3>
-                                    <div class="youtubevideo" ><iframe width="'.$iframeWidth.'" height="'.$iframeHeight.'" src="//www.youtube.com/embed/'.$videoId.'" frameborder="0" allowfullscreen></iframe>
-                                    <div class="content">'.get_the_content().'</p>
+                                    <div class="youtubevideo" >
+                                    <a href="http://www.youtube.com/embed/'.$videoId.'?rel=0&wmode=transparent" class="youtube cboxElement" title="<b>'.get_the_title().'</b>: '.strip_tags(get_the_content()).'"><img src="http://img.youtube.com/vi/'.$videoId.'/hqdefault.jpg" /></a>
                                     </div>
                                     
                             </td>
@@ -303,13 +335,42 @@ while ( $wpyg_query->have_posts() ) : $wpyg_query->the_post();
 			//$ij--; 
 			}   
       
+       $ij++;           
+	endwhile;
+else :
+while ( $wpyg_query->have_posts() ) : $wpyg_query->the_post();
+
+       $videoId=stripslashes(get_post_meta(get_the_ID(),'wpyg_video-id',true));
+	   
+	  $wpyg_content .='
+                    	
+                            <td class="youtube" style="width:'.$widthAvg.'%;">
+                            		<h3>'.get_the_title().'</h3>
+                                    <div class="youtubevideo" ><iframe width="'.$iframeWidth.'" height="'.$iframeHeight.'" src="//www.youtube.com/embed/'.$videoId.'" frameborder="0" allowfullscreen></iframe>
+                                    <div class="content">'.get_the_content().'</p>
+                                    </div>
+                                    
+                            </td>
+                        ';
+
+         
+        if($perrow==$ij)     
+        {
+			$wpyg_content .='</tr><tr>';
+			$ij=0;
+			//$ij--; 
+			}   
+      
        $ij++; 
                  
 	endwhile;
+endif;
+
 	$wpyg_content .="</tr></table></div>";
 	wp_reset_query();
 	return $wpyg_content;
 	endif;
+}
 }
 	
 /* ADD NEW SHORT CODE FOR PUBLISH ALL youtube post ON LIST PAGE */
@@ -317,7 +378,8 @@ add_shortcode('wp_youtube_gallery','get_wp_youtube_gallery');
 // use [wp_youtube_gallery catid="ENTER CATEGORY ID"] shortcode
 
 
-// get all options value for "Custom Share Buttons with Floating Sidebar"
+// get all options value for "WP Youtube gallery"
+if(!function_exists('get_wpyg_admin_options')){ 
 	function get_wpyg_admin_options() {
 		global $wpdb;
 		$wpygOptions = $wpdb->get_results("SELECT option_name, option_value FROM $wpdb->options WHERE option_name LIKE 'wpyg_%'");
@@ -328,3 +390,4 @@ add_shortcode('wp_youtube_gallery','get_wp_youtube_gallery');
 	
 		return $wpygOptions;	
 	}
+}

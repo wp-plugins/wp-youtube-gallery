@@ -24,9 +24,8 @@ Using this plugin we can easly add the youtube gallery on any page/post using sh
 * Options for define the number or videos per row
 
 = Shortcode = 
-* [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"]
-* [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]
-* [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG" per_row="Define number of video to publish on per row" total_videos="Define number of videos publish on page" width="define iframe width" height="define iframe height"]
+* [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"] OR [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]
+
 
 
 == Installation ==
@@ -40,8 +39,11 @@ Step 3. Go to Settings/"WP Youtube Gallery" and configure the plugin settings.
 == Frequently Asked Questions ==
 1.How add gallery on my website?
 
-Using [wp_youtube_gallery catid="ENTER CATEGORY ID"] shortcode you can add the gallery on any page/post
+Use [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"] OR [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"] shortcode to add the gallery on any page/post.
 
+2.How add gallery in template files?
+
+Add given code <?php if(function_exists('get_wp_youtube_gallery')){ echo do_shortcode('[wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]');}?>
 
 == Screenshots ==
 
@@ -51,9 +53,15 @@ Using [wp_youtube_gallery catid="ENTER CATEGORY ID"] shortcode you can add the g
 
 == Changelog == 
 
+= 1.2 = 
+ * Added Lightbox
+ * Changed plugin settings page layout
+ * Fixed some minor issues
+
 = 1.1 = 
  * Plugin is now responsive
  * Add new options to define into sortcode
  * Fixed CSS issues
+
 = 1.0 = 
  * First stable release
