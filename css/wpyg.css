@@ -1,0 +1,26 @@
+/**
+ * Wp Youtube Gallery
+ * @CSS
+ * */
+ 
+.wp_youtube_gallery_block {width:100%; position:relative;}
+.wp_youtube_gallery_block .wp_youtube_gallery .youtubetext iframe { margin-bottom: 2%;
+    padding: 0;
+    position: relative;height:100%;}
+.wp_youtube_gallery_block  .youtubetext .content {width:100%;}
+.wp_youtube_gallery_block  .youtubetext {padding:1% 1% 1% 1%; float:left;}
+.wp_youtube_gallery_block .wp_youtube_gallery tr td{border-top: 1px solid #CC181E;}
+.wp_youtube_gallery_block .wp_youtube_gallery tr td:first-child {padding:1% 1% 1% 0;border-left:none;  }
+.wp_youtube_gallery_block .wp_youtube_gallery tr td:last-child {padding:1% 0 1% 1%;  border-right:none;}
+.wp_youtube_gallery_block .wp_youtube_gallery .youtubetext h3:hover{color:#0093D0; float:left; cursor:pointer}
+.wp_youtube_gallery_block .wp_youtube_gallery .youtubetext h3 {  color: #222222;
+    float: left;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding: 0;width:100%;}
+
+.wp_youtube_gallery_block .wp_youtube_gallery .youtubetext p{  color: #222222;
+    margin: 0%;
+    padding: 0;width:100%;}
+
+.wp_youtube_gallery_block .wp_youtube_gallery .youtubevideo img {width:auto; height:auto;} 
