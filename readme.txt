@@ -11,20 +11,20 @@ Add Youtube Gallery on your website!
 == Description ==
 
 "wp-youtube-gallery" is the very simple plugin for add to simple youtube gallery on your site.
-
-Using this plugin we can easly add the youtube gallery on any page/post using shortcode. It's a responsive plugin.
-
+Using "wp-youtube-gallery" plugin we can easily add the youtube gallery on any page/post using shortcode. It's a responsive plugin.
 [wp_youtube_gallery category_slug="test" per_row="4" total_videos="3" height="200" width="300"]
 
 = Features = 
+ * Lightbox
  * Responsive gallery
- * Shortcode to Show Youtube videos on any page/posts 
- * Use category id/slug in shortcode for publish the video from specific category
- * Option for define the number of videos to publish on posts/pages
- * Options for define the videos per row
+ * Shortcode
+ 
 
 = Shortcode = 
-* [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"] OR [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]
+ * [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"] OR [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]
+  * Use category id/slug in shortcode for publish the video from specific category
+  * Option for define the number of videos to publish on posts/pages
+  * Options for define the videos per row
 
 
 
@@ -37,13 +37,11 @@ Step 2. Activate the plugin through the Plugins menu in WordPress
 Step 3. Go to Settings/"WP Youtube Gallery" and configure the plugin settings.
 
 == Frequently Asked Questions ==
-1.How add gallery on my website?
+Q.1 How add gallery on my website?
+Ans. Use [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"] shortcode to add the gallery on any page/post.
 
-Use [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"] OR [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"] shortcode to add the gallery on any page/post.
-
-2.How add gallery in template files?
-
-Add given code <?php if(function_exists('get_wp_youtube_gallery')){ echo do_shortcode('[wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]');}?>
+Q.2 How add gallery in theme template files?
+Ans. Add given code <?php if(function_exists('get_wp_youtube_gallery')){ echo do_shortcode('[wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]');}?>
 
 == Screenshots ==
 
