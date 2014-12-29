@@ -3,7 +3,7 @@ Contributors:india-web-developer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WN785E5V492L4
 Tags: youtube gallery, youtube,gallery,video gallery
 Requires at least: 2.7
-Tested up to: 4.0.1
+Tested up to: 4.1
 Stable tag: 1.2
 
 Add Youtube Gallery on your website!
