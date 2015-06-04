@@ -2,8 +2,8 @@
 Contributors:india-web-developer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WN785E5V492L4
 Tags: youtube gallery, youtube,gallery,video gallery
-Requires at least: 2.7
-Tested up to: 4.2
+Requires at least: 3.3
+Tested up to: 4.2.2
 Stable tag: 1.2
 
 Add Youtube Gallery on your website!
@@ -37,11 +37,18 @@ Step 2. Activate the plugin through the Plugins menu in WordPress
 Step 3. Go to Settings/"WP Youtube Gallery" and configure the plugin settings.
 
 == Frequently Asked Questions ==
-Q.1 How add gallery on my website?
+= Q.1 How add gallery on my website? =
+
 Ans. Use [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"] shortcode to add the gallery on any page/post.
 
-Q.2 How add gallery in theme template files?
-Ans. Add given code <?php if(function_exists('get_wp_youtube_gallery')){ echo do_shortcode('[wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]');}?>
+= Q.2 How add gallery in theme template files? =
+
+Ans. Add given code = <?php echo do_shortcode('[wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]'); ?>=
+
+= Q.3 How i can find the youtube category slug? =
+
+Ans. You can find the category slug from youtube category list page, For more please see screenshot-4.png
+
 
 == Screenshots ==
 
@@ -50,6 +57,8 @@ Ans. Add given code <?php if(function_exists('get_wp_youtube_gallery')){ echo do
 2. screenshot-2.png
 
 3. screenshot-3.png
+= Find category slug =
+4. screenshot-4.png
 
 == Changelog == 
 
