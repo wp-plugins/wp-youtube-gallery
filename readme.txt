@@ -1,6 +1,6 @@
 === WP Youtube Gallery ===
 Contributors:india-web-developer
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WN785E5V492L4
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZEMSYQUZRUK6A
 Tags: youtube gallery, youtube,gallery,video gallery
 Requires at least: 3.3
 Tested up to: 4.3
