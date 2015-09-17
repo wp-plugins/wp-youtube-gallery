@@ -4,51 +4,52 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: youtube gallery, youtube,gallery,video gallery
 Requires at least: 3.3
 Tested up to: 4.3
-Stable tag: 1.2
+Stable tag: 1.3
 
 Add Youtube Gallery on your website!
 
 == Description ==
 
 "wp-youtube-gallery" is the very simple plugin for add to simple youtube gallery on your site.
-Using "wp-youtube-gallery" plugin we can easily add the youtube gallery on any page/post using shortcode. It's a responsive plugin.
-[wp_youtube_gallery category_slug="test" per_row="4" total_videos="3" height="200" width="300"]
+Using "wp-youtube-gallery" plugin we can easily add the youtube gallery on any page/post using shortcode.
 
 = Features = 
- * Lightbox
- * Responsive gallery
  * Shortcode
- 
+ * Option for add to video title and description
 
 = Shortcode = 
- * [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"] OR [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]
+  * [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"] OR [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]
   * Use category id/slug in shortcode for publish the video from specific category
-  * Option for define the number of videos to publish on posts/pages
-  * Options for define the videos per row
 
 
+= Go Pro =
+
+We have also released an add-on for WP Youtube Gallery which not only demonstrates the flexibility of "WP Youtube Gallery", but also adds some important features:
+
+ * Responsive Gallery 
+ * Video Lightbox popup
+ * Disable Related Videos
+ * Faster support
+
+ **[Upgrade to Pro Version OR Live Demo](http://csbwfs.mrwebsolution.in/wp-youtube-gallery-pro)**
 
 == Installation ==
 
-Step 1. Upload "wp-youtube-gallery" folder to the `/wp-content/plugins/` directory
+In most cases you can install automatically from WordPress.
 
-Step 2. Activate the plugin through the Plugins menu in WordPress
+However, if you install this manually, follow these steps:
 
-Step 3. Go to Settings/"WP Youtube Gallery" and configure the plugin settings.
+ * Step 1. Upload "wp-youtube-gallery" folder to the `/wp-content/plugins/` directory
+ * Step 2. Activate the plugin through the Plugins menu in WordPress
+ * Step 3. Go to Settings >> "WP Youtube Gallery" and configure the plugin settings.
+
 
 == Frequently Asked Questions ==
-= Q.1 How add gallery on my website? =
-
+Q.1 How add gallery on my website?
 Ans. Use [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"] shortcode to add the gallery on any page/post.
 
-= Q.2 How add gallery in theme template files? =
-
-Ans. Add given code = <?php echo do_shortcode('[wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]'); ?>=
-
-= Q.3 How i can find the youtube category slug? =
-
-Ans. You can find the category slug from youtube category list page, For more please see screenshot-4.png
-
+Q.2 How add gallery in theme template files?
+Ans. Add given code <?php if(function_exists('get_wp_youtube_gallery')){ echo do_shortcode('[wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]');}?>
 
 == Screenshots ==
 
@@ -57,13 +58,15 @@ Ans. You can find the category slug from youtube category list page, For more pl
 2. screenshot-2.png
 
 3. screenshot-3.png
-= Find category slug =
-4. screenshot-4.png
 
 == Changelog == 
 
+= 1.3 = 
+ * Fixed responsive issues
+ * Fixed css minor issues
+ * Released Pro version
+
 = 1.2 = 
- * Added Lightbox
  * Changed plugin settings page layout
  * Fixed some minor issues
 
