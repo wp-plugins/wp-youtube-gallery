@@ -20,7 +20,8 @@ Using "wp-youtube-gallery" plugin we can easily add the youtube gallery on any p
 = Shortcode = 
   * [wp_youtube_gallery catid="ENTER YOUTUBE CATEGORY ID"] OR [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]
   * Use category id/slug in shortcode for publish the video from specific category
-
+ 
+**[Upgrade to Pro Version OR Live Demo](http://csbwfs.mrwebsolution.in/wp-youtube-gallery-pro)**
 
 = Go Pro =
 
