@@ -46,13 +46,17 @@ However, if you install this manually, follow these steps:
 
 
 == Frequently Asked Questions ==
+
 Q.1 How add gallery on my website?
+
 Ans. Use [wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"] shortcode to add the gallery on any page/post.
 
 Q.2 How add gallery in theme template files?
+
 Ans. Add given code <?php if(function_exists('get_wp_youtube_gallery')){ echo do_shortcode('[wp_youtube_gallery category_slug="ENTER YOUTUBE CATEGORY SLUG"]');}?>
 
-Q.1 How find category slug?
+Q.3 How find category slug?
+
 Ans. You can find category slug from youtube category list page. For more see screenshot-4.png
 
 
